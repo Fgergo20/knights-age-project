@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bx5obrcumg12k"]
+
+[ext_resource type="PackedScene" uid="uid://bp2y3dk4m6bk4" path="res://PLAYER_ELEMENTS/player.tscn" id="1_fh8vo"]
+[ext_resource type="Script" path="res://MAP_ELEMENTS/scenes/camera_3d.gd" id="1_jy4x4"]
+[ext_resource type="PackedScene" uid="uid://dd7mxx7mlhp6t" path="res://MAP_ELEMENTS/scenes/good_island.tscn" id="1_rib2f"]
+[ext_resource type="Material" uid="uid://cjkwwmjxi1gs7" path="res://MAP_ELEMENTS/materials/water.material" id="2_iqkbm"]
+[ext_resource type="PackedScene" uid="uid://doxuraedi2b11" path="res://MAP_ELEMENTS/scenes/castle.tscn" id="5_vg8ty"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py1pa"]
+sky_top_color = Color(0, 0.383333, 1, 1)
+sky_horizon_color = Color(0.22, 0.87, 1, 1)
+ground_bottom_color = Color(0.011669, 0.27693, 0.378787, 1)
+ground_horizon_color = Color(0.0196078, 0.396078, 0.533333, 1)
+
+[sub_resource type="Sky" id="Sky_wmtwd"]
+sky_material = SubResource("ProceduralSkyMaterial_py1pa")
+
+[sub_resource type="Environment" id="Environment_koxd1"]
+background_mode = 2
+background_energy_multiplier = 0.37
+sky = SubResource("Sky_wmtwd")
+sky_custom_fov = 17.5
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+sdfgi_y_scale = 2
+fog_light_energy = 0.65
+fog_sun_scatter = 3.5
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_47nl8"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 23.19
+dof_blur_near_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hh0of"]
+material = ExtResource("2_iqkbm")
+size = Vector2(300, 300)
+subdivide_width = 500
+subdivide_depth = 300
+
+[node name="Main_LAND" type="Node3D"]
+
+[node name="Player_node" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Player_node"]
+transform = Transform3D(0.80696, 0.319069, -0.497001, 0, 0.841511, 0.54024, 0.590606, -0.435952, 0.679066, -7.528, 13.987, 17.316)
+fov = 40.0
+script = ExtResource("1_jy4x4")
+
+[node name="Player" parent="Player_node" instance=ExtResource("1_fh8vo")]
+transform = Transform3D(-0.53084, 0, -0.486425, 0, 0.72, 0, 0.486425, 0, -0.53084, -1.192, 4.758, 8.39)
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_koxd1")
+camera_attributes = SubResource("CameraAttributesPractical_47nl8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.815622, -0.207639, -0.540043, -0.38563, -0.50075, 0.774944, -0.431335, 0.840318, 0.328351, 3.76, 18.66, -12.176)
+light_color = Color(1, 0.8, 0.643137, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="GOOD_ISLAND" parent="." instance=ExtResource("1_rib2f")]
+
+[node name="water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57706, 0)
+mesh = SubResource("PlaneMesh_hh0of")
+
+[node name="StaticBody3D" parent="." instance=ExtResource("5_vg8ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.774, 4.13588, -12.2139)
