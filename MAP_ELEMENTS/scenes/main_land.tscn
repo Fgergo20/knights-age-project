@@ -43,7 +43,7 @@ subdivide_depth = 300
 [node name="Player_node" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Player_node"]
-transform = Transform3D(0.80696, 0.319069, -0.497001, 0, 0.841511, 0.54024, 0.590606, -0.435952, 0.679066, -7.528, 13.987, 17.316)
+transform = Transform3D(0.80696, 0.422692, -0.412488, 0, 0.698415, 0.715693, 0.590606, -0.577536, 0.563593, -6.638, 15.132, 15.796)
 fov = 40.0
 script = ExtResource("1_jy4x4")
 
