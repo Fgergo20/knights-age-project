@@ -11,8 +11,8 @@ cull_mode = 2
 albedo_texture = ExtResource("1_vat3e")
 texture_repeat = false
 distance_fade_mode = 3
-distance_fade_min_distance = 15.0
-distance_fade_max_distance = 20.0
+distance_fade_min_distance = 5.0
+distance_fade_max_distance = 15.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gmalx"]
 resource_name = "tree_leaves_tree_leafs2_003"

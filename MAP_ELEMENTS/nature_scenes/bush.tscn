@@ -48,6 +48,6 @@ shadow_mesh = SubResource("ArrayMesh_5is4d")
 [node name="bush" type="Node3D"]
 
 [node name="bush_mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.24925, 0, 0, 0, 1.24925, 0, 0, 0, 1.24925, 0, 0, 0)
+transform = Transform3D(1.24925, 0, 0, 0, 1.24925, 0, 0, 0, 1.24925, 0, -0.295874, 0)
 mesh = SubResource("ArrayMesh_2i8tt")
 skeleton = NodePath("")

@@ -268,13 +268,13 @@ modifier_stack = SubResource("Resource_k0pli")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
-[node name="ScatterItem2" type="Node3D" parent="Trees"]
+[node name="trees" type="Node3D" parent="Trees"]
 script = ExtResource("9_hgfap")
 visibility_range_end = 60.0
 visibility_range_fade_mode = 1
 path = "res://MAP_ELEMENTS/nature_scenes/tree_trunkpart.tscn"
 
-[node name="ScatterItem3" type="Node3D" parent="Trees"]
+[node name="bushes" type="Node3D" parent="Trees"]
 script = ExtResource("9_hgfap")
 proportion = 50
 source_scale_multiplier = 2.0
@@ -284,6 +284,16 @@ source_ignore_scale = false
 visibility_range_end = 60.0
 visibility_range_fade_mode = 1
 path = "res://MAP_ELEMENTS/nature_scenes/bush.tscn"
+
+[node name="stones" type="Node3D" parent="Trees"]
+script = ExtResource("9_hgfap")
+source_scale_multiplier = 3.0
+source_ignore_position = false
+source_ignore_rotation = false
+source_ignore_scale = false
+visibility_range_end = 60.0
+visibility_range_fade_mode = 1
+path = "res://MAP_ELEMENTS/nature_scenes/stones.tscn"
 
 [node name="ScatterShape" type="Node3D" parent="Trees"]
 script = ExtResource("10_76rse")

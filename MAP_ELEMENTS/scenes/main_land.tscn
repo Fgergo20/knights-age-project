@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx5obrcumg12k"]
+[gd_scene load_steps=14 format=3 uid="uid://bx5obrcumg12k"]
 
 [ext_resource type="PackedScene" uid="uid://bp2y3dk4m6bk4" path="res://PLAYER_ELEMENTS/player.tscn" id="1_fh8vo"]
 [ext_resource type="Script" path="res://MAP_ELEMENTS/scenes/camera_3d.gd" id="1_jy4x4"]
 [ext_resource type="PackedScene" uid="uid://dd7mxx7mlhp6t" path="res://MAP_ELEMENTS/scenes/good_island.tscn" id="1_rib2f"]
 [ext_resource type="Material" uid="uid://cjkwwmjxi1gs7" path="res://MAP_ELEMENTS/materials/water.material" id="2_iqkbm"]
 [ext_resource type="PackedScene" uid="uid://doxuraedi2b11" path="res://MAP_ELEMENTS/scenes/castle.tscn" id="5_vg8ty"]
+[ext_resource type="PackedScene" uid="uid://0nn6l0bgm4hi" path="res://MAP_ELEMENTS/scenes/ship/ship.tscn" id="5_yedyp"]
+[ext_resource type="PackedScene" uid="uid://bse5tvcnq43g0" path="res://MAP_ELEMENTS/scenes/castle_elements/barrel.tscn" id="6_l7xww"]
+[ext_resource type="PackedScene" uid="uid://c0moxg755fnw3" path="res://MAP_ELEMENTS/scenes/castle_elements/chariot.tscn" id="7_epcqr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py1pa"]
 sky_top_color = Color(0, 0.383333, 1, 1)
@@ -43,12 +46,12 @@ subdivide_depth = 300
 [node name="Player_node" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Player_node"]
-transform = Transform3D(0.80696, 0.422692, -0.412488, 0, 0.698415, 0.715693, 0.590606, -0.577536, 0.563593, -6.638, 15.132, 15.796)
+transform = Transform3D(0.80696, 0.260756, -0.529926, 0, 0.897258, 0.441506, 0.590606, -0.356278, 0.724052, -19.733, 10.867, 12.121)
 fov = 40.0
 script = ExtResource("1_jy4x4")
 
 [node name="Player" parent="Player_node" instance=ExtResource("1_fh8vo")]
-transform = Transform3D(-0.53084, 0, -0.486425, 0, 0.72, 0, 0.486425, 0, -0.53084, -1.192, 4.758, 8.39)
+transform = Transform3D(-0.53084, 0, -0.486425, 0, 0.72, 0, 0.486425, 0, -0.53084, -14.618, 5.144, 5.577)
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -62,11 +65,49 @@ light_color = Color(1, 0.8, 0.643137, 1)
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="GOOD_ISLAND" parent="." instance=ExtResource("1_rib2f")]
+[node name="World_assets" type="Node" parent="."]
 
-[node name="water" type="MeshInstance3D" parent="."]
+[node name="GOOD_ISLAND" parent="World_assets" instance=ExtResource("1_rib2f")]
+
+[node name="water" type="MeshInstance3D" parent="World_assets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57706, 0)
 mesh = SubResource("PlaneMesh_hh0of")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" parent="." instance=ExtResource("5_vg8ty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.774, 4.13588, -12.2139)
+[node name="ship" parent="World_assets" instance=ExtResource("5_yedyp")]
+transform = Transform3D(0.83749, 0, 0.546453, 0, 1, 0, -0.546453, 0, 0.83749, -28.1289, 3.02845, 8.18052)
+
+[node name="barrel" parent="World_assets" instance=ExtResource("6_l7xww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6884, 2.85147, 4.53662)
+
+[node name="FUll_Castle_+Assets" type="Node" parent="."]
+
+[node name="Full Castle" parent="." instance=ExtResource("5_vg8ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7983, 4.13421, -12.0275)
+
+[node name="chariot" parent="." instance=ExtResource("7_epcqr")]
+transform = Transform3D(0.85, 0, 0, 0, 0.840132, -0.129144, 0, 0.129144, 0.840132, -0.758, 3.63732, 2.5)
+
+[node name="barrel" parent="." instance=ExtResource("6_l7xww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4437, 2.84962, 4.88635)
+
+[node name="barrel2" parent="." instance=ExtResource("6_l7xww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2465, 2.84037, 5.78389)
+
+[node name="barrel3" parent="." instance=ExtResource("6_l7xww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4536, 2.79159, 5.56887)
+
+[node name="barrel4" parent="." instance=ExtResource("6_l7xww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5607, 2.85542, 3.71662)
+
+[node name="chariot" parent="barrel4" instance=ExtResource("7_epcqr")]
+transform = Transform3D(0.86082, -0.0344125, 0.00651706, 0.0350214, 0.843676, -0.17094, 0.00044599, 0.171063, 0.844379, 2.038, 0.69299, 7.76394)
+
+[node name="barrel14" parent="barrel4/chariot" instance=ExtResource("6_l7xww")]
+transform = Transform3D(0.453856, 0.0193785, 1.08523, 3.41999e-12, 1.17628, -0.0210044, -1.0854, 0.00810304, 0.453784, -0.271764, 0.147767, -0.879381)
+
+[node name="barrel15" parent="barrel4/chariot" instance=ExtResource("6_l7xww")]
+transform = Transform3D(0.453856, 0.0193785, 1.08523, 3.41999e-12, 1.17628, -0.0210044, -1.0854, 0.00810304, 0.453784, 0.297718, 0.147767, 0.0266905)
+
+[node name="barrel16" parent="barrel4/chariot" instance=ExtResource("6_l7xww")]
+transform = Transform3D(0.453856, 0.0193785, 1.08523, 3.41999e-12, 1.17628, -0.0210044, -1.0854, 0.00810304, 0.453784, -0.271764, 0.147767, 0.90011)
