@@ -22,7 +22,7 @@ sky_material = SubResource("ProceduralSkyMaterial_py1pa")
 background_mode = 2
 background_energy_multiplier = 0.37
 sky = SubResource("Sky_wmtwd")
-sky_custom_fov = 17.5
+sky_custom_fov = 97.5
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 2
@@ -46,12 +46,12 @@ subdivide_depth = 300
 [node name="Player_node" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Player_node"]
-transform = Transform3D(0.80696, 0.260756, -0.529926, 0, 0.897258, 0.441506, 0.590606, -0.356278, 0.724052, -19.733, 10.867, 12.121)
+transform = Transform3D(0.80696, 0.369272, -0.460927, 0, 0.78043, 0.625243, 0.590606, -0.504546, 0.629776, -18.663, 12.297, 10.776)
 fov = 40.0
 script = ExtResource("1_jy4x4")
 
 [node name="Player" parent="Player_node" instance=ExtResource("1_fh8vo")]
-transform = Transform3D(-0.53084, 0, -0.486425, 0, 0.72, 0, 0.486425, 0, -0.53084, -14.618, 5.144, 5.577)
+transform = Transform3D(-0.53084, 0, -0.486425, 0, 0.72, 0, 0.486425, 0, -0.53084, -14.108, 5.144, 4.387)
 
 [node name="Lighting" type="Node" parent="."]
 
