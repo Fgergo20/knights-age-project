@@ -80,34 +80,32 @@ transform = Transform3D(0.83749, 0, 0.546453, 0, 1, 0, -0.546453, 0, 0.83749, -2
 [node name="barrel" parent="World_assets" instance=ExtResource("6_l7xww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6884, 2.85147, 4.53662)
 
-[node name="FUll_Castle_+Assets" type="Node" parent="."]
-
-[node name="Full Castle" parent="." instance=ExtResource("5_vg8ty")]
+[node name="Full Castle" parent="World_assets" instance=ExtResource("5_vg8ty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7983, 4.13421, -12.0275)
 
-[node name="chariot" parent="." instance=ExtResource("7_epcqr")]
+[node name="chariot" parent="World_assets" instance=ExtResource("7_epcqr")]
 transform = Transform3D(0.85, 0, 0, 0, 0.840132, -0.129144, 0, 0.129144, 0.840132, -0.758, 3.63732, 2.5)
 
-[node name="barrel" parent="." instance=ExtResource("6_l7xww")]
+[node name="barrel2" parent="World_assets" instance=ExtResource("6_l7xww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4437, 2.84962, 4.88635)
 
-[node name="barrel2" parent="." instance=ExtResource("6_l7xww")]
+[node name="barrel3" parent="World_assets" instance=ExtResource("6_l7xww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2465, 2.84037, 5.78389)
 
-[node name="barrel3" parent="." instance=ExtResource("6_l7xww")]
+[node name="barrel4" parent="World_assets" instance=ExtResource("6_l7xww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4536, 2.79159, 5.56887)
 
-[node name="barrel4" parent="." instance=ExtResource("6_l7xww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5607, 2.85542, 3.71662)
+[node name="chariot2" parent="World_assets" instance=ExtResource("7_epcqr")]
+transform = Transform3D(0.86082, -0.0344125, 0.00651706, 0.0350214, 0.843676, -0.17094, 0.00044599, 0.171063, 0.844379, -16.5227, 3.54841, 11.4806)
 
-[node name="chariot" parent="barrel4" instance=ExtResource("7_epcqr")]
-transform = Transform3D(0.86082, -0.0344125, 0.00651706, 0.0350214, 0.843676, -0.17094, 0.00044599, 0.171063, 0.844379, 2.038, 0.69299, 7.76394)
-
-[node name="barrel14" parent="barrel4/chariot" instance=ExtResource("6_l7xww")]
+[node name="barrel14" parent="World_assets/chariot2" instance=ExtResource("6_l7xww")]
 transform = Transform3D(0.453856, 0.0193785, 1.08523, 3.41999e-12, 1.17628, -0.0210044, -1.0854, 0.00810304, 0.453784, -0.271764, 0.147767, -0.879381)
 
-[node name="barrel15" parent="barrel4/chariot" instance=ExtResource("6_l7xww")]
+[node name="barrel15" parent="World_assets/chariot2" instance=ExtResource("6_l7xww")]
 transform = Transform3D(0.453856, 0.0193785, 1.08523, 3.41999e-12, 1.17628, -0.0210044, -1.0854, 0.00810304, 0.453784, 0.297718, 0.147767, 0.0266905)
 
-[node name="barrel16" parent="barrel4/chariot" instance=ExtResource("6_l7xww")]
+[node name="barrel16" parent="World_assets/chariot2" instance=ExtResource("6_l7xww")]
 transform = Transform3D(0.453856, 0.0193785, 1.08523, 3.41999e-12, 1.17628, -0.0210044, -1.0854, 0.00810304, 0.453784, -0.271764, 0.147767, 0.90011)
+
+[node name="barrel5" parent="World_assets" instance=ExtResource("6_l7xww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5607, 2.85542, 3.71662)
