@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dseyxwy0lfqei"
+path="res://.godot/imported/Knight_leg armor.jpg-ea83740baa0048b0652e1e32a5cef60a.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "2a34447eb0cf934e53363ff7b3fa30c2"
+}
+
+[deps]
+
+source_file="res://PLAYER_ELEMENTS/knight/Knight_leg armor.jpg"
+dest_files=["res://.godot/imported/Knight_leg armor.jpg-ea83740baa0048b0652e1e32a5cef60a.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

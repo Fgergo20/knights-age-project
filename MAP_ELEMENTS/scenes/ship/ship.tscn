@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://0nn6l0bgm4hi"]
+[gd_scene load_steps=12 format=4 uid="uid://0nn6l0bgm4hi"]
 
 [ext_resource type="Texture2D" uid="uid://b82l1dpgqqotw" path="res://MAP_ELEMENTS/imported_elements/ship/ship_ship2.png" id="1_3raey"]
 [ext_resource type="Texture2D" uid="uid://c6603qxu00jum" path="res://MAP_ELEMENTS/imported_elements/ship/ship_dark brown oak plank floor (3629823126).png" id="2_326an"]
 [ext_resource type="Texture2D" uid="uid://ki02tlyfh24u" path="res://MAP_ELEMENTS/imported_elements/ship/ship_shipsail2.png" id="3_6lixm"]
 [ext_resource type="PackedScene" uid="uid://dhg6nrtnujsdo" path="res://MAP_ELEMENTS/scenes/castle_elements/flag_1.tscn" id="4_sj5hi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxp0e"]
+radius = 1.5534
+height = 12.0016
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_be2fo"]
 resource_name = "ship_body:matterial"
@@ -164,7 +168,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qsl7g")
 
-[node name="ship" type="Node3D"]
+[node name="ship" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.469701, 1.1038)
+shape = SubResource("CapsuleShape3D_vxp0e")
 
 [node name="ship_mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_qouso")
