@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://crimsa3ecp5vr"
+path.s3tc="res://.godot/imported/ShipCaptain_shaded2.png-c5a570557c4795431a5dd0c821fb741b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "7da17b19a8e41fd3dd24f44efe794fed"
+}
+
+[deps]
+
+source_file="res://NPC_ELEMENTS/imported/npcs/ship_captain/ShipCaptain_shaded2.png"
+dest_files=["res://.godot/imported/ShipCaptain_shaded2.png-c5a570557c4795431a5dd0c821fb741b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://byc3gsf6ce8od"
+path="res://.godot/imported/Knight_helmet.jpg-2d41c1e8914f2e4b0fe3b9af704050a0.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "0cddb85607a7e893a15c2f9ebc7c5238"
+}
+
+[deps]
+
+source_file="res://PLAYER_ELEMENTS/knight/Knight_helmet.jpg"
+dest_files=["res://.godot/imported/Knight_helmet.jpg-2d41c1e8914f2e4b0fe3b9af704050a0.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
