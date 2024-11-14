@@ -161,14 +161,14 @@ func get_random_roaming_position() -> Vector3:
 	
 	# Generate a random point within the roaming range (not necessarily within the navigation region)
 	var random_point = global_transform.origin + Vector3(
-		randf_range(-roaming_range-10, 10+roaming_range),
+		randf_range(-roaming_range, roaming_range),
 		0,  # Assuming you're working on a flat surface
-		randf_range(-roaming_range-10, 10+roaming_range)
+		randf_range(-roaming_range, roaming_range)
 	)
 	
 	# Set the random point as the target position for the NavigationAgent3D
 	navigation_agent.target_position = random_point
-	
+	#return random_point
 	# Check if the random position is reachable
 	if navigation_agent.is_target_reachable():
 		return random_point
@@ -253,8 +253,12 @@ func reset_animation(animation_name: String):
 	animation_tree.set(reset_param, 0.0)
 	
 func check_for_attack():
-	if attack_cooldown_timer == 0 and target.health > 1 and target and global_transform.origin.distance_to(target.global_transform.origin) <= attack_range:
-		trigger_attack()
+	if target.health > 0:
+		if attack_cooldown_timer == 0  and target and global_transform.origin.distance_to(target.global_transform.origin) <= attack_range:
+			trigger_attack()
+	elif target and global_transform.origin.distance_to(target.global_transform.origin) <= attack_range:
+		current_state = State.IDLE
+		
 
 func check_for_death():
 	if health <= 0:

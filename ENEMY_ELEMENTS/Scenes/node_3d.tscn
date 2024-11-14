@@ -404,8 +404,8 @@ mesh = SubResource("ArrayMesh_re0o6")
 skeleton = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.993961, 0.0446329, -0.100247, 0, 0.913545, 0.406737, 0.109734, 0.40428, -0.908028, 12.056, 46.237, -3.125)
-fov = 63.1
+transform = Transform3D(-0.993961, 0.0446329, -0.100247, 0, 0.913545, 0.406737, 0.109734, 0.40428, -0.908028, 12.056, 47.372, -3.125)
+fov = 42.8
 script = ExtResource("2_hs4x7")
 
 [node name="Player" parent="." instance=ExtResource("3_ywn0m")]
@@ -424,7 +424,7 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="Grass_Field_giant" parent="." node_paths=PackedStringArray("target") instance=ExtResource("18_ad3hd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.943, 40.2554, 27.8238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8567, 40.2554, 23.6472)
 target = NodePath("../Player")
 
 [node name="Grass_Field_giant2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("18_ad3hd")]
