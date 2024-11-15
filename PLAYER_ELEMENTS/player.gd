@@ -9,10 +9,14 @@ const BLEND_SPEED = 5.0  # Controls how quickly blend amounts change
 
 var health = 100  # Example health variable
 
+
 # Animation tree and blend parameters
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 @onready var camera = get_parent().get_node("Camera3D")
+@onready var area = $Area3D  # Reference to your Area3D node
+
+
 
 # Animation blend values
 var run_blend = 0.0

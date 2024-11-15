@@ -27,7 +27,6 @@ var current_state: State = State.IDLE
 
 var navigation_agent: NavigationAgent3D
 var idle_timer: float = 0.0
-var roaming_timer: float = 0.0
 var roaming_target: Vector3
 var raycast: RayCast3D
 
@@ -51,24 +50,24 @@ func _ready():
 	else:
 		print("Error: AnimationTree not found for instance.")
 
-func _process(delta):
+func _physics_process(delta):
 	state_timer += delta
 	
 	var target_node = target
 	var target_position = target_node.global_transform.origin if target_node else null
 
 	# Check if target's health is below 1 to make the mob idle
-	if target and target.health <= 1:
-		if current_state != State.IDLE:
-			change_state(State.IDLE)
-	else:
+	#if target and target.health < 1:
+		#if current_state != State.IDLE:
+			#print("buzi")#change_state(State.IDLE)
+	#else:
 		# Decide on the next state based on distance and state timer
-		if target_position and global_transform.origin.distance_to(target_position) < follow_distance:
-			if current_state == State.IDLE and state_timer >= idle_to_follow_delay:
-				change_state(State.FOLLOW)
-		else:
-			if current_state == State.FOLLOW and state_timer >= follow_to_idle_delay:
-				change_state(State.IDLE)
+	if target and target.health > 0 and target_position and global_transform.origin.distance_to(target_position) < follow_distance:
+		if current_state == State.IDLE and state_timer >= idle_to_follow_delay:
+			change_state(State.FOLLOW)
+	else:
+		if current_state == State.FOLLOW and state_timer >= follow_to_idle_delay:
+			change_state(State.IDLE)
 
 	match current_state:
 		State.IDLE:
@@ -80,11 +79,13 @@ func _process(delta):
 
 	update_animation_state(delta)
 	
-	check_for_attack()
-	
+	if target.health > 0:
+		check_for_attack()
+	else:
+		is_attacking = false
+		
 	check_for_death()
 
-# Change state and reset the timer
 # Change state and reset the timer
 func change_state(new_state: State):
 	#if current_state != new_state:
@@ -95,12 +96,13 @@ func change_state(new_state: State):
 
 
 func handle_idle_state(delta, target_position):
-	roaming_timer = 0.0
 	idle_timer += delta
-	if target_position and global_transform.origin.distance_to(target_position) < follow_distance:
+	if target.health > 0 and target_position and global_transform.origin.distance_to(target_position) < follow_distance:
 		current_state = State.FOLLOW
 	elif idle_timer >= idle_duration:
-		start_roaming()
+		if current_state != State.ROAM:
+			start_roaming()
+		
 
 func handle_follow_state(delta, target_position):
 	if target_position:
@@ -128,11 +130,14 @@ func handle_follow_state(delta, target_position):
 			velocity = Vector3.ZERO
 
 func handle_roam_state(delta):
-	
+	# Check if we have reached the roaming target
 	if global_transform.origin.distance_to(roaming_target) < close_range:
-		current_state = State.IDLE
+		# Switch to IDLE once target is reached
+		change_state(State.IDLE)
 		idle_timer = 0.0
+		velocity = Vector3.ZERO  # Stop movement when idle
 	else:
+		# Continue moving towards the current roaming target
 		navigation_agent.target_position = roaming_target
 		if not navigation_agent.is_navigation_finished():
 			var next_position = navigation_agent.get_next_path_position()
@@ -145,37 +150,35 @@ func handle_roam_state(delta):
 			var current_rotation_y = rotation.y
 			rotation.y = lerp_angle(current_rotation_y, target_rotation_y, rotation_speed * delta)
 
+			# Set movement velocity
 			velocity = target_direction * speed
-			avoid_walls()  # Apply wall avoidance here
+			#avoid_walls()  # Apply wall avoidance
 			move_and_slide()
 
 
-func start_roaming():
-	roaming_target = get_random_roaming_position()
-	current_state = State.ROAM
 
-func get_random_roaming_position() -> Vector3:
-	# Get the NavigationAgent3D node (or create one if needed)
-	@warning_ignore("shadowed_variable")
-	var navigation_agent = $NavigationAgent3D
+func start_roaming():
+	# Set a new roaming target only once when starting to roam
+	roaming_target = call_random_roaming_position_from_root()
+	change_state(State.ROAM)
+
+
+
+func call_random_roaming_position_from_root() -> Vector3:
+	# Assuming the root node is accessible as `Main_LAND`
+	#var main_land = get_tree().root.get_node("Main_LAND")
 	
-	# Generate a random point within the roaming range (not necessarily within the navigation region)
-	var random_point = global_transform.origin + Vector3(
-		randf_range(-roaming_range, roaming_range),
-		0,  # Assuming you're working on a flat surface
-		randf_range(-roaming_range, roaming_range)
-	)
+	# Get the mob's current position
+	var mob_position = global_transform.origin
 	
-	# Set the random point as the target position for the NavigationAgent3D
-	navigation_agent.target_position = random_point
-	#return random_point
-	# Check if the random position is reachable
-	if navigation_agent.is_target_reachable():
-		return random_point
-	else:
-		# If the position is not reachable, try again or return a fallback position
-		#print("Random position not reachable, trying another.")
-		return get_random_roaming_position()  # Recursively try to find another reachable point
+	# Define the desired roaming radius
+	var roaming_radius = 10.0  # Adjust this value as needed
+	
+	# Call the function with mob position and radius
+	return get_tree().root.get_node("Main_LAND").get_random_roaming_position(mob_position, roaming_radius)
+
+
+
 
 
 
@@ -236,6 +239,10 @@ func trigger_attack():
 	await get_tree().create_timer(attack_time).timeout
 	is_attacking = false
 	attack_cooldown_timer = 0
+	if !target.health > 0:
+		start_roaming()
+		#print("kocsog")
+	
 
 # Call this function to trigger a death animation
 func trigger_death():
@@ -253,12 +260,8 @@ func reset_animation(animation_name: String):
 	animation_tree.set(reset_param, 0.0)
 	
 func check_for_attack():
-	if target.health > 0:
-		if attack_cooldown_timer == 0  and target and global_transform.origin.distance_to(target.global_transform.origin) <= attack_range:
-			trigger_attack()
-	elif target and global_transform.origin.distance_to(target.global_transform.origin) <= attack_range:
-		current_state = State.IDLE
-		
+	if attack_cooldown_timer == 0  and target and global_transform.origin.distance_to(target.global_transform.origin) <= attack_range:
+		trigger_attack()
 
 func check_for_death():
 	if health <= 0:

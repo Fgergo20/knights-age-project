@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1sugau657cc6"]
+
+[ext_resource type="Script" path="res://test/damage_test.gd" id="1_dtaol"]
+
+[node name="DamageTest" type="Node3D"]
+script = ExtResource("1_dtaol")
+
+[node name="Area3D" type="Area3D" parent="."]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx5obrcumg12k"]
+[gd_scene load_steps=21 format=3 uid="uid://bx5obrcumg12k"]
 
+[ext_resource type="Script" path="res://MAP_ELEMENTS/scenes/main_land.gd" id="1_06vcq"]
 [ext_resource type="PackedScene" uid="uid://bp2y3dk4m6bk4" path="res://PLAYER_ELEMENTS/player.tscn" id="1_fh8vo"]
 [ext_resource type="Script" path="res://MAP_ELEMENTS/scenes/camera_3d.gd" id="1_jy4x4"]
 [ext_resource type="PackedScene" uid="uid://dd7mxx7mlhp6t" path="res://MAP_ELEMENTS/scenes/good_island.tscn" id="1_rib2f"]
@@ -11,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cayx47m8bhm3i" path="res://NPC_ELEMENTS/scenes/ship_captain.tscn" id="9_wico6"]
 [ext_resource type="PackedScene" uid="uid://c6pxuyos7xan7" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Scorpio_man.tscn" id="11_jqbp8"]
 [ext_resource type="PackedScene" uid="uid://b6nsp47ov7ijc" path="res://ENEMY_ELEMENTS/Scenes/Animals/Gray_Wolf.tscn" id="11_m6fin"]
+[ext_resource type="PackedScene" uid="uid://cr44fm6actyfb" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Grass_Field_Giant.tscn" id="13_o6fre"]
+[ext_resource type="PackedScene" uid="uid://c7oucvctbk28e" path="res://ENEMY_ELEMENTS/Scenes/Mobs/mobs.tscn" id="14_x4tr1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py1pa"]
 sky_top_color = Color(0, 0.383333, 1, 1)
@@ -34,7 +37,6 @@ fog_light_energy = 0.65
 fog_sun_scatter = 3.5
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_47nl8"]
-dof_blur_far_enabled = true
 dof_blur_far_distance = 44.49
 dof_blur_near_enabled = true
 
@@ -53,6 +55,7 @@ region_merge_size = 10.0
 edge_max_length = 1.0
 
 [node name="Main_LAND" type="Node3D"]
+script = ExtResource("1_06vcq")
 
 [node name="Player_node" type="Node" parent="."]
 
@@ -133,22 +136,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08068, 2.86981, -8.66035)
 visible = false
 target = NodePath("../Player_node/Player")
 
-[node name="Scorpio_man_mob" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
+[node name="Mob_desert" type="Node" parent="."]
+
+[node name="Scorpio_man_mob" parent="Mob_desert" node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 593.645, 7.36053, -8.26986)
-target = NodePath("../Player_node/Player")
+target = NodePath("../../Player_node/Player")
 
-[node name="Scorpio_man_mob2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
+[node name="Scorpio_man_mob2" parent="Mob_desert" node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 593.064, 8.32423, -35.0728)
-target = NodePath("../Player_node/Player")
+target = NodePath("../../Player_node/Player")
 
-[node name="Scorpio_man_mob3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
+[node name="Scorpio_man_mob3" parent="Mob_desert" node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 605.541, 9.25206, -19.8154)
-visible = false
-target = NodePath("../Player_node/Player")
+target = NodePath("../../Player_node/Player")
 
-[node name="Scorpio_man_mob4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
+[node name="Scorpio_man_mob4" parent="Mob_desert" node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 615.857, 6.14699, -1.77007)
-visible = false
-target = NodePath("../Player_node/Player")
+target = NodePath("../../Player_node/Player")
+
+[node name="Scorpio_man_mob5" parent="Mob_desert" node_paths=PackedStringArray("target") instance=ExtResource("11_jqbp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1231.71, 12.294, -3.54014)
+target = NodePath("../../Player_node/Player")
+
+[node name="Main_map_mobs" type="Node" parent="."]
+
+[node name="Wolf_Mob" parent="Main_map_mobs" node_paths=PackedStringArray("target") instance=ExtResource("11_m6fin")]
+transform = Transform3D(0.349472, 0, -0.936947, 0, 1, 0, 0.936947, 0, 0.349472, -7.06142, 2.852, 17.1171)
+target = NodePath("../../Player_node/Player")
+
+[node name="Wolf_Mob2" parent="Main_map_mobs" node_paths=PackedStringArray("target") instance=ExtResource("11_m6fin")]
+transform = Transform3D(0.494852, 0, 0.868977, 0, 1, 0, -0.868977, 0, 0.494852, -9.62975, 2.852, 15.7532)
+target = NodePath("../../Player_node/Player")
+
+[node name="Wolf_Mob3" parent="Main_map_mobs" node_paths=PackedStringArray("target") instance=ExtResource("11_m6fin")]
+transform = Transform3D(-0.124675, 0, -0.992198, 0, 1, 0, 0.992198, 0, -0.124675, -7.73276, 2.852, 15.0593)
+target = NodePath("../../Player_node/Player")
+
+[node name="Grass_Field_giant" parent="." instance=ExtResource("13_o6fre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 598, 8, -12)
+idle_duration = 3.0
+wall_avoidance_distance = 2.0
+health = 100.0
+close_range = 6.0
+attack_range = 5.0
+attack_damage = 10.0
+death_time = 3.0
+attack_time = 1.5
+gravity = -9.8
+follow_to_idle_delay = 1.0
+idle_to_follow_delay = 1.0
+
+[node name="Mobs" parent="." instance=ExtResource("14_x4tr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588.977, 4.13531, -5.01948)
 
 [editable path="NavigationRegion3D/World_assets/Full Castle"]

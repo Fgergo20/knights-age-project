@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7oucvctbk28e"]
+
+[ext_resource type="PackedScene" uid="uid://cr44fm6actyfb" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Grass_Field_Giant.tscn" id="1_1da4w"]
+
+[node name="Mobs" type="Node3D"]
+
+[node name="Grass_Field_giant" parent="." instance=ExtResource("1_1da4w")]
+idle_duration = null
+wall_avoidance_distance = null
+health = null
+close_range = null
+attack_range = null
+attack_damage = null
+death_time = null
+attack_time = null
+gravity = null
+follow_to_idle_delay = null
+idle_to_follow_delay = null

@@ -1406,9 +1406,21 @@ bind/30/pose = Transform3D(0.996732, -0.0807857, 0, 0, 0, 1, -0.0807857, -0.9967
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_ed06x")
+follow_distance = null
 speed = 3.0
+roaming_range = null
+idle_duration = null
+wall_avoidance_distance = null
+rotation_speed = null
+health = null
 close_range = 1.6
 attack_range = 1.5
+attack_damage = null
+death_time = null
+attack_time = null
+gravity = null
+follow_to_idle_delay = null
+idle_to_follow_delay = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.610279, 0)
