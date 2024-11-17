@@ -35,5 +35,6 @@ _surfaces = [{
 
 [node name="tree_leafs2_145" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.048812, 0.891205, -0.255898, 0.68778, -0.206658, -0.588526, -0.621842, -0.158616, -0.671018, 0, 10.548, 0)
+visibility_range_end = 100.0
 mesh = SubResource("ArrayMesh_gmalx")
 skeleton = NodePath("")

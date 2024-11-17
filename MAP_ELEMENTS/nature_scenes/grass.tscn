@@ -23,6 +23,7 @@ _surfaces = [{
 
 [node name="grass_mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.131628, -0.188586, 0.225023)
+visibility_range_end = 60.0
 instance_shader_parameters/camera_bend_strength = 0.2
 mesh = SubResource("ArrayMesh_oe40d")
 skeleton = NodePath("")

@@ -41,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33307, 0)
 shape = SubResource("CylinderShape3D_dd8qx")
 
 [node name="Better_tree_002" type="MeshInstance3D" parent="."]
+visibility_range_end = 100.0
 mesh = SubResource("ArrayMesh_qq83p")
 skeleton = NodePath("")
 

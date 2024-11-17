@@ -1,18 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7oucvctbk28e"]
+[gd_scene load_steps=7 format=3 uid="uid://bp0oxix4rdpd7"]
 
-[ext_resource type="PackedScene" uid="uid://cr44fm6actyfb" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Grass_Field_Giant.tscn" id="1_1da4w"]
+[ext_resource type="Script" path="res://ENEMY_ELEMENTS/Scenes/Mobs/mobs_arguments.gd" id="1_vjast"]
+[ext_resource type="PackedScene" uid="uid://cr44fm6actyfb" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Grass_Field_Giant.tscn" id="2_ksdht"]
+[ext_resource type="PackedScene" uid="uid://c6pxuyos7xan7" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Scorpio_man.tscn" id="3_kj14m"]
+[ext_resource type="PackedScene" uid="uid://b6nsp47ov7ijc" path="res://ENEMY_ELEMENTS/Scenes/Animals/Gray_Wolf.tscn" id="4_nnqin"]
+[ext_resource type="PackedScene" uid="uid://c1jyysgwy282" path="res://ENEMY_ELEMENTS/Scenes/Mobs/Ice_giant_mob.tscn" id="5_imu0d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q55x4"]
 
 [node name="Mobs" type="Node3D"]
+script = ExtResource("1_vjast")
 
-[node name="Grass_Field_giant" parent="." instance=ExtResource("1_1da4w")]
-idle_duration = null
-wall_avoidance_distance = null
-health = null
-close_range = null
-attack_range = null
-attack_damage = null
-death_time = null
-attack_time = null
-gravity = null
-follow_to_idle_delay = null
-idle_to_follow_delay = null
+[node name="Bab" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_q55x4")
+
+[node name="Scorpio_man_mob" parent="." instance=ExtResource("3_kj14m")]
+process_mode = 4
+visible = false
+
+[node name="Grass_giant_mob" parent="." instance=ExtResource("2_ksdht")]
+process_mode = 4
+visible = false
+
+[node name="Ice_giant_mob" parent="." instance=ExtResource("5_imu0d")]
+process_mode = 4
+visible = false
+
+[node name="Wolf_Mob" parent="." instance=ExtResource("4_nnqin")]
+process_mode = 4
+visible = false

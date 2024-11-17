@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var target: Node3D = null  # The target to follow, e.g., another CharacterBody3D or Player
+@export var target: Node3D = null # The target to follow, e.g., another CharacterBody3D or Player
 @export var follow_distance: float = 10.0  # Distance to start following the target
 @export var speed: float = 1.0  # Speed when moving
 @export var roaming_range: float = 15.0  # Range within which the character can roam
@@ -22,7 +22,7 @@ extends CharacterBody3D
 var state_timer: float = 0.0  # Timer to track state delay
 var attack_cooldown_timer: float = 0.0
 
-enum State { IDLE, FOLLOW, ROAM }
+enum State { IDLE, FOLLOW, ROAM, DEAD }
 var current_state: State = State.IDLE
 
 var navigation_agent: NavigationAgent3D
@@ -35,6 +35,7 @@ var is_attacking: bool = false
 var is_dead: bool = false
 
 func _ready():
+
 	navigation_agent = $NavigationAgent3D
 	raycast = RayCast3D.new()
 	raycast.target_position = Vector3(wall_avoidance_distance, 0, 0)
@@ -56,12 +57,9 @@ func _physics_process(delta):
 	var target_node = target
 	var target_position = target_node.global_transform.origin if target_node else null
 
-	# Check if target's health is below 1 to make the mob idle
-	#if target and target.health < 1:
-		#if current_state != State.IDLE:
-			#print("buzi")#change_state(State.IDLE)
-	#else:
-		# Decide on the next state based on distance and state timer
+	if health < 1:
+		change_state(State.DEAD)
+
 	if target and target.health > 0 and target_position and global_transform.origin.distance_to(target_position) < follow_distance:
 		if current_state == State.IDLE and state_timer >= idle_to_follow_delay:
 			change_state(State.FOLLOW)
@@ -165,9 +163,7 @@ func start_roaming():
 
 
 func call_random_roaming_position_from_root() -> Vector3:
-	# Assuming the root node is accessible as `Main_LAND`
-	#var main_land = get_tree().root.get_node("Main_LAND")
-	
+
 	# Get the mob's current position
 	var mob_position = global_transform.origin
 	
@@ -232,7 +228,10 @@ func trigger_attack():
 	reset_animation("Attack")
 	set_animation_blend("Attack", 1.0)
 
-	target.health -= attack_damage  # Apply damage after delay
+	if health > 0:
+		target.health -= attack_damage  # Apply damage after delay
+		target.create_label3d(str(attack_damage), Vector3(0, 2.5, 0), 50, Color(1.0, 0.0, 0.0, 1.0))
+	
 	attack_cooldown_timer = 1
 	print(target.health)
 	# Reset attack state after attack time
@@ -264,5 +263,5 @@ func check_for_attack():
 		trigger_attack()
 
 func check_for_death():
-	if health <= 0:
+	if health < 1:
 		trigger_death()
