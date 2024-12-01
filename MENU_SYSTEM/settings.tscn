@@ -1,0 +1,215 @@
+[gd_scene load_steps=2 format=3 uid="uid://gjevnw4vnua0"]
+
+[ext_resource type="Script" path="res://MENU_SYSTEM/settings.gd" id="1_r3m4s"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3m4s")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 1
+
+[node name="Controls" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Mode"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Keyboard"
+popup/item_1/text = "Controller"
+popup/item_1/id = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Forward"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "UpArrow"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Backward"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "DownArrow"
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Left"
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "LeftArrow"
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Right"
+
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "RightArrow"
+
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Primary action"
+
+[node name="Button5" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "A"
+
+[node name="Video" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "1080p"
+popup/item_1/text = "720p"
+popup/item_1/id = 1
+popup/item_2/text = "480p"
+popup/item_2/id = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "V-Sync"
+
+[node name="OptionButton2" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "on"
+popup/item_0/id = 1
+popup/item_1/text = "off"
+popup/item_1/id = 2
+
+[node name="Audio" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Sound effect volume"
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Music volume"
+
+[node name="HSlider3" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
